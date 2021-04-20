@@ -36,7 +36,7 @@ function userinput(){
     }
 
     var wantsSpecial = confirm('Do you want special characters?')
-    var wantsNum = confirm('Do you want Num characters?')
+    var wantsNum = confirm('Do you want Numbers?')
     var wantsLowercase = confirm('Do you want Lowercase characters?')
     var wantsUppercase = confirm('Do you want Uppercase characters?')
 
@@ -67,7 +67,38 @@ var randomSaved = choice[random1];
 return randomSaved;
 }
 
+// Array for character choices
+var savedCharacters = []
+
+// Array for characters that are guarenteed to be used
+var guarenteed = []
+
+
 //generate pass function
+if(wantsSpecial === true) {
+ savedCharacters = savedCharacters.concat(special);
+ guarenteed.push(
+   special[Math.floor(Math.random() * special.length)]
+ )
+}
+if(wantsNum === true) {
+ savedCharacters = savedCharacters.concat(num);
+ guarenteed.push(
+   num[Math.floor(Math.random() * num.length)]
+ )
+}
+if(wantsUppercase === true) {
+ savedCharacters = savedCharacters.concat(uppercase);
+ guarenteed.push(
+   uppercase[Math.floor(Math.random() * uppercase.length)]
+ )
+}
+if(wantsLowercase === true) {
+ savedCharacters = savedCharacters.concat(lowercase);
+ guarenteed.push(
+  lowercase[Math.floor(Math.random() * lowercase.length)]
+ )
+}
 
 
 
@@ -84,12 +115,7 @@ function writePassword() {
 
   passwordText.value = password;
 }
-  // if("click") {
-  //   prompt("Do you want Uppercase letters?")
-  //   prompt("Do you want Lowercase letters?")
-  //   prompt("Do you want Numbers?")
-  //   prompt("Do you want Special Characters?")
-  //   console.log()
+ 
   
   
   
@@ -100,11 +126,7 @@ function writePassword() {
   // ***Add event listener to generate button***
   generateBtn.addEventListener("click", writePassword); /////ends the code
   
-  // document.getElementById("generate").addEventListener("click", functions())
-  // // { alert("password"));
-  
-  
-  // };
+
   
 // }
 
