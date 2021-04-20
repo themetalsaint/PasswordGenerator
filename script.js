@@ -1,10 +1,10 @@
 //**To Do**
-//Need the elements
-//Need the button to work
-//Need it to prompt if we want each character
+//Need the elements +
+//Need the button to work +
+//Need it to prompt if we want each character +
 //Need to accept which ones user wants
 //Need to produce the correct password
-//Need a maximum length of min 8 and max 128 characters
+//Need a maximum length of min 8 and max 128 characters +
 
 
 
@@ -19,12 +19,13 @@ var uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'
 console.log('special', special)
 
 
-function userinput(){
+function generatePassword(){
 
   var length = prompt('How many characters would you like?');
   
 
-    //conditional statement
+    //Conditional statement to prevent user error
+
     if(isNaN(length) === true){
       alert("Please enter a valid number.")
       return;
@@ -56,49 +57,49 @@ function userinput(){
       wantsUppercase: wantsUppercase,
       wantsLowercase: wantsLowercase
     };
+    // Array for character choices
+    var savedCharacters = []
+    
+    // Array for characters that are guarenteed to be used
+    var guarenteed = []
+    
+    
+    //generate pass function
+    if(wantsSpecial === true) {
+     savedCharacters = savedCharacters.concat(special);
+     guarenteed.push(
+       special[Math.floor(Math.random() * special.length)]
+     )
+    }
+    if(wantsNum === true) {
+     savedCharacters = savedCharacters.concat(num);
+     guarenteed.push(
+       num[Math.floor(Math.random() * num.length)]
+     )
+    }
+    if(wantsUppercase === true) {
+     savedCharacters = savedCharacters.concat(uppercase);
+     guarenteed.push(
+       uppercase[Math.floor(Math.random() * uppercase.length)]
+     )
+    }
+    if(wantsLowercase === true) {
+     savedCharacters = savedCharacters.concat(lowercase);
+     guarenteed.push(
+      lowercase[Math.floor(Math.random() * lowercase.length)]
+     )
+    }
 
     return userAnswer;
 }
 
-
+//Retreiving random charaters
 function random(choice){
 var random1 =  Math.floor(Math.random() * choice.length);
 var randomSaved = choice[random1];
 return randomSaved;
 }
 
-// Array for character choices
-var savedCharacters = []
-
-// Array for characters that are guarenteed to be used
-var guarenteed = []
-
-
-//generate pass function
-if(wantsSpecial === true) {
- savedCharacters = savedCharacters.concat(special);
- guarenteed.push(
-   special[Math.floor(Math.random() * special.length)]
- )
-}
-if(wantsNum === true) {
- savedCharacters = savedCharacters.concat(num);
- guarenteed.push(
-   num[Math.floor(Math.random() * num.length)]
- )
-}
-if(wantsUppercase === true) {
- savedCharacters = savedCharacters.concat(uppercase);
- guarenteed.push(
-   uppercase[Math.floor(Math.random() * uppercase.length)]
- )
-}
-if(wantsLowercase === true) {
- savedCharacters = savedCharacters.concat(lowercase);
- guarenteed.push(
-  lowercase[Math.floor(Math.random() * lowercase.length)]
- )
-}
 
 
 
@@ -109,8 +110,7 @@ if(wantsLowercase === true) {
 
 //****Write password to the #password input***(right before on click)
 function writePassword() {
-  var password = userinput(); //last step change userinput to generatepassword
- 
+  var password = generatePassword(); //last step change userinput to generatepassword
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
@@ -121,9 +121,6 @@ function writePassword() {
   
   // var index = Math.floor(Math.random() * special.length) <- can be done w/ function
   
-  
-  
-  // ***Add event listener to generate button***
   generateBtn.addEventListener("click", writePassword); /////ends the code
   
 
