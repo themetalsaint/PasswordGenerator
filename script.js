@@ -64,7 +64,7 @@ function generatePassword(){
     var guarenteed = []
     
     
-    //generate pass function
+    //Generate Password function
     if(wantsSpecial === true) {
      savedCharacters = savedCharacters.concat(special);
      guarenteed.push(
@@ -89,9 +89,15 @@ function generatePassword(){
       lowercase[Math.floor(Math.random() * lowercase.length)]
      )
     }
+    for(i=guarenteed.length; i<length; i++){
+        guarenteed.push(savedCharacters[Math.floor(Math.random() * savedCharacters.length)])
+    }
 
-    return userAnswer;
+return guarenteed.join("");
+
+
 }
+
 
 //Retreiving random charaters
 function random(choice){
@@ -110,7 +116,7 @@ return randomSaved;
 
 //****Write password to the #password input***(right before on click)
 function writePassword() {
-  var password = generatePassword(); //last step change userinput to generatepassword
+  var password = generatePassword(); 
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
@@ -119,11 +125,8 @@ function writePassword() {
   
   
   
-  // var index = Math.floor(Math.random() * special.length) <- can be done w/ function
-  
-  generateBtn.addEventListener("click", writePassword); /////ends the code
-  
 
   
-// }
+generateBtn.addEventListener("click", writePassword); /////ends the code
+  
 
