@@ -1,15 +1,4 @@
-//**To Do**
-//Need the elements +
-//Need the button to work +
-//Need it to prompt if we want each character +
-//Need to accept which ones user wants
-//Need to produce the correct password
-//Need a maximum length of min 8 and max 128 characters +
 
-
-
-
-// ***Assignment Code***
 var generateBtn = document.querySelector("#generate");
 
 var special = [ '!', '@', '#', "$", '*', '?', '"', '&', '+', '~']
@@ -95,7 +84,6 @@ function generatePassword(){
 
 return guarenteed.join("");
 
-
 }
 
 
@@ -120,7 +108,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-}
+}              
  
   
   
